@@ -12,7 +12,7 @@ const Header = ({ title }) => {
     if (username && password) {
       const validator = loginCall(username, password);
       if (validator) {
-        console.log("Render new view");
+        console.log("Render new views");
       } else {
         alert("Username or Password incorrect");
       }
