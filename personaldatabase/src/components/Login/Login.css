@@ -1,36 +1,49 @@
 .header {
-    color: #E3E3E3;
-    font-family:'Ubuntu';
-    text-align: center;
-    font-size: 50px;
-    margin-top: 100px;
+  color: #e3e3e3;
+  font-family: "Ubuntu";
+  text-align: center;
+  font-size: 50px;
+  margin-top: 100px;
 }
 
 #rcorners1 {
-    border-radius: 50px;
-    background: #7491AF;
-    padding: 0px; 
-    width: 1200px;
-    height: 150px; 
-    margin: auto; 
+  border-radius: 50px;
+  background: #7491af;
+  padding: 0px;
+  width: 1200px;
+  height: 150px;
+  margin: auto;
 }
 
 .loginButton {
-    border-radius: 100px;
-    background: #7491AF;
-    color: #E3E3E3;
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 50px;
-    width: 250px;
-    height: 100px;
-    margin-top: 500px;
-    text-align: center;
-    border: none;
+  border-radius: 100px;
+  background: #7491af;
+  color: #e3e3e3;
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  width: 250px;
+  height: 100px;
+  margin-top: 500px;
+  text-align: center;
+  border: none;
 }
 
+.loginButton:active {
+  background: #1900ff;
+}
 
-
-
-
+#username,
+#password {
+  width: 250px;
+  position: absolute;
+  top: 50%;
+  border-radius: 50px;
+  background-color: #7491af;
+  color: #e3e3e3;
+  border: hidden;
+}
+#password {
+  top: 55%;
+}
