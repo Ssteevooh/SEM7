@@ -6,6 +6,8 @@ const express = require('express'), app = express(), port = 5000,
     dropdownRouter = require('./routes/dropdownRoutes'),
     loginRouter = require('./routes/loginRoutes');
 
+app.use(express.json());
+
 app.use('/browse', browseRouter.router);
 app.use('/post', postRouter.router);
 app.use('/dropdown', dropdownRouter.router);
