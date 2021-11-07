@@ -1,23 +1,26 @@
 import React, { useContext } from "react";
 import { LoginContext } from "../../contexts/LoginContext";
+import { RouteContext } from "../../contexts/RouterContext";
 import { Input } from "antd";
 import PropTypes from "prop-types";
 import "./Login.css";
 
-const Header = ({ title }) => {
+const Index = ({ title }) => {
   const { password, username, setUsername, setPassword, loginCall } =
     useContext(LoginContext);
+
+  const { setRoute } = useContext(RouteContext);
 
   const submit = (err) => {
     if (username && password) {
       const validator = loginCall(username, password);
       if (validator) {
-        console.log("Render new view");
+        setRoute("Menu");
       } else {
         alert("Username or Password incorrect");
+        setPassword("");
+        setUsername("");
       }
-    } else {
-      console.log("Error");
     }
   };
 
@@ -45,12 +48,12 @@ const Header = ({ title }) => {
   );
 };
 
-Header.defaultProps = {
+Index.defaultProps = {
   title: "Stamp auction database",
 };
 
-Header.protoTypes = {
+Index.protoTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export default Header;
+export default Index;
