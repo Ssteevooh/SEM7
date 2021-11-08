@@ -1,5 +1,5 @@
-import { LoginProvider } from "./contexts/LoginContext";
-import { RouteProvider } from "./contexts/RouterContext";
+import { LoginProvider } from "./Contexts/LoginContext";
+import { RouteProvider } from "./Contexts/RouterContext";
 
 const App = () => {
   return (

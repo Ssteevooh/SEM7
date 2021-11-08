@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { LoginContext } from "../../contexts/LoginContext";
-import { RouteContext } from "../../contexts/RouterContext";
+import { LoginContext } from "../../Contexts/LoginContext";
+import { RouteContext } from "../../Contexts/RouterContext";
 import { Input } from "antd";
 import PropTypes from "prop-types";
 import "./Login.css";
@@ -14,6 +14,7 @@ const Index = ({ title }) => {
   const submit = (err) => {
     if (username && password) {
       const validator = loginCall(username, password);
+      console.log(validator + "Validator");
       if (validator) {
         setRoute("Menu");
       } else {
