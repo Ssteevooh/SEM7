@@ -16,7 +16,7 @@ const Index = ({ title }) => {
       const validator = loginCall(username, password);
       console.log(validator + "Validator");
       if (validator) {
-        setRoute("Menu");
+        setRoute("Post");
       } else {
         alert("Username or Password incorrect");
         setPassword("");
