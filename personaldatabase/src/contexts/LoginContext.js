@@ -12,13 +12,13 @@ export const LoginProvider = ({ children }) => {
   const loginCall = async (user, pass) => {
     // TODO:  better logic
     //        Change adress to backend
-    console.log("test");
     const response = await axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((res) => {
         const person = res.data;
         console.log(person);
       })
+
       .then(() => {
         return dummyUser.username === user || user === "."
           ? dummyUser.password === pass || pass === "."
