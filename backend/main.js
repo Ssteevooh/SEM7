@@ -9,6 +9,7 @@ app.use(express.json());
 
 app.use('/auctions', browseRouter.router);
 app.use('/dropdown', dropdownRouter.router);
+app.use("/login", loginRouter.Router);
 
 app.listen(port, () => {
     console.log('Server running on port ' + port);
