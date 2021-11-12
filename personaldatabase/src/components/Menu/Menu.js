@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { RouteContext } from "../../Contexts/RouterContext";
+import "./Menu.css";
 
 const Menu = ({ title }) => {
+  const { setRoute } = useContext(RouteContext);
+
   return (
     <div>
       <h1 className="stampAuctionDatabase">{title}</h1>
