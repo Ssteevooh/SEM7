@@ -1,13 +1,18 @@
+const countryDb = require("../db/Country.js");
+const sellerDb = require("../db/Seller.js");
+
 // get all sellers for dropdown menu
 
-exports.getSellers = (req, res) => {
-    res.send("all sellers");
+exports.getSellers = async (req, res) => {
+    const results = await sellerDb.getAllSellers();
+    res.status(201).json(results);
 };
 
 // get all countries for dropdown menu
 
-exports.getCountries = (req, res) => {
-    res.send("all countries");
+exports.getCountries = async (req, res) => {
+    const results = await countryDb.getAllCountries();
+    res.status(201).json(results);
 };
 
 // get all categories under a country specified on the body

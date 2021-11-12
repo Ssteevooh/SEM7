@@ -1,13 +1,15 @@
-const db = require("../db/Country.js");
+const countryDb = require("../db/Country.js");
+const sellerDb = require("../db/Seller.js");
 
 // POST METHODS -------------
 
-exports.postSeller = (req, res) => {
-    res.send("new seller created");
+exports.postSeller = async (req, res) => {
+    const results = await sellerDb.createSeller(req.body);
+    res.status(201).send();
 };
 
 exports.postCountry = async (req, res) => {
-    const results = await db.createCountry(req.body);
+    const results = await countryDb.createCountry(req.body);
     res.status(201).send();
 };
 
