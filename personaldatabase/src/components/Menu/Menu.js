@@ -1,14 +1,37 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { RouteContext } from "../../Contexts/RouterContext";
+import "antd/dist/antd.css";
+import { Layout, Menu as antdMenu, Drawer } from "antd";
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+} from "@ant-design/icons";
 import "./Menu.css";
 
 const Menu = ({ title }) => {
   const { setRoute } = useContext(RouteContext);
+  const [visible, setVisible] = useState(false);
+
+  const showDrawer = (value) => {
+    setVisible(value);
+  };
+
+  const onClose = () => {
+    setVisible(false);
+  };
 
   return (
     <div>
       <h1 className="stampAuctionDatabase">{title}</h1>
+      <button className="browseButton">
+        Browse
+      </button>
+      <button className="postButton">
+        Post
+      </button>
+      <MenuUnfoldOutlined onClick={() => showDrawer(true)}/>
+      <Drawer title="John Doe" placement="right" onClose={onClose} visible={visible}></Drawer>
     </div>
   );
 };
