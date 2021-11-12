@@ -18,7 +18,6 @@ export const LoginProvider = ({ children }) => {
         const person = res.data;
         console.log(person);
       })
-
       .then(() => {
         return dummyUser.username === user || user === "."
           ? dummyUser.password === pass || pass === "."

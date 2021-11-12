@@ -8,11 +8,11 @@ import "./Post.css";
 const Post = ({ title }) => {
   return (
     <div id="postWrapper">
-      <Row>
-        <Col span={6} className="column">
+      <Row justify="space-around" align="middle">
+        <Col span={12} className="column">
           test
         </Col>
-        <Col span={12} className="column">
+        <Col span={11} className="column">
           test
         </Col>
       </Row>
