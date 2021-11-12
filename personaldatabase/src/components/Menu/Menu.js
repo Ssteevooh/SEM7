@@ -26,11 +26,12 @@ const Menu = ({ title }) => {
       <button className="browseButton">
         Browse
       </button>
-      <button className="postButton">
+      <button className="postButton" onClick={() => setRoute("Post")}>
         Post
       </button>
       <UnorderedListOutlined style={{ fontSize: "60px", position:"absolute", right:"20px", top:"50px"}} onClick={() => showDrawer(true)}/>
-      <Drawer title="John Doe" placement="right" onClose={onClose} visible={visible}></Drawer>
+      <Drawer title="John Doe" placement="right" onClose={onClose} visible={visible}>
+      </Drawer>
     </div>
   );
 };

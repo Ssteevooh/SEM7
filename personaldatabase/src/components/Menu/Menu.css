@@ -13,6 +13,7 @@
 }
 
 .browseButton {
+    cursor: pointer;
     position: absolute;
     left: 25vw;
     width: 350px;
@@ -28,6 +29,7 @@
 }
 
 .postButton {
+    cursor: pointer;
     position: absolute;
     right: 25vw;
     width: 350px;
