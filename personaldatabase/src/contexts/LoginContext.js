@@ -16,6 +16,7 @@ export const LoginProvider = ({ children }) => {
       .get("https://jsonplaceholder.typicode.com/users")
       .then((res) => {
         const person = res.data;
+        console.log(person);
       })
       .then(() => {
         return dummyUser.username === user || user === "."
