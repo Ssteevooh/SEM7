@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { RouteContext } from "../../Contexts/RouterContext";
+import "./Menu.css";
 
 const Menu = ({ title }) => {
-  return (
-    <div className="header">
-      <h1 id="rcorners1">{title}</h1>
+  const { setRoute } = useContext(RouteContext);
 
-      <button className="loginButton" onClick={() => console.log("Jee")}>
-        LOGIN
-      </button>
+  return (
+    <div>
+      <h1 className="stampAuctionDatabase">{title}</h1>
     </div>
   );
 };
