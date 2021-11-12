@@ -10,14 +10,14 @@ export const RouteProvider = ({ children }) => {
 
   const Route = () => {
     switch (route) {
-      case "Index":
-        return <Index />;
-      case "Post":
-        return <Post />;
-      case "Menu":
-        return <Menu />;
-      default:
-        return <Index />;
+    case "Index":
+      return <Index />;
+    case "Post":
+      return <Post />;
+    case "Menu":
+      return <Menu />;
+    default:
+      return <Index />;
     }
   };
   return (
