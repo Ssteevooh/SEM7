@@ -3,5 +3,5 @@ exports.postNewAuction = (req, res) => {
 };
 
 exports.editAuction = (req, res) => {
-    res.send("auction " + req.params.id + " updated");
+    res.send("auction " + req.body.id + " updated");
 };
