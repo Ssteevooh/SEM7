@@ -4,8 +4,7 @@ import { RouteContext } from "../../Contexts/RouterContext";
 import "antd/dist/antd.css";
 import { Layout, Menu as antdMenu, Drawer } from "antd";
 import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
+  UnorderedListOutlined,
 } from "@ant-design/icons";
 import "./Menu.css";
 
@@ -30,7 +29,7 @@ const Menu = ({ title }) => {
       <button className="postButton">
         Post
       </button>
-      <MenuUnfoldOutlined onClick={() => showDrawer(true)}/>
+      <UnorderedListOutlined onClick={() => showDrawer(true)}/>
       <Drawer title="John Doe" placement="right" onClose={onClose} visible={visible}></Drawer>
     </div>
   );
