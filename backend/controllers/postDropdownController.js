@@ -1,11 +1,14 @@
+const db = require("../db/Country.js");
+
 // POST METHODS -------------
 
 exports.postSeller = (req, res) => {
     res.send("new seller created");
 };
 
-exports.postCountry = (req, res) => {
-    res.send("new country created");
+exports.postCountry = async (req, res) => {
+    const results = await db.createCountry(req.body);
+    res.status(201).send();
 };
 
 exports.postCategory1 = (req, res) => {
