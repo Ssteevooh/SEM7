@@ -1,10 +1,12 @@
-const LoginButton = ({color, text}) => {
-    return (
-    <button style={{backgroundColor: color}}
-    className="btn">
-        {text}
-    </button>
-    )
-}
+import React from "react";
 
-export default LoginButton
+const LoginButton = ({color, text}) => {
+  return (
+    <button style={{backgroundColor: color}}
+      className="btn">
+      {text}
+    </button>
+  );
+};
+
+export default LoginButton;
