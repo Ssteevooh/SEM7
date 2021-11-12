@@ -1,11 +1,11 @@
-import Header from "./components/Login/Header";
-import { LoginProvider } from "./contexts/LoginContext";
+import { LoginProvider } from "./Contexts/LoginContext";
+import { RouteProvider } from "./Contexts/RouterContext";
 
 const App = () => {
   return (
     <LoginProvider>
       <div className="container">
-        <Header />
+        <RouteProvider />
       </div>
     </LoginProvider>
   );
