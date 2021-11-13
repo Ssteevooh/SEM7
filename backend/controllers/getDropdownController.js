@@ -11,7 +11,7 @@ const category3Db = require("../db/Category3.js");
 
 exports.getSellers = async (req, res) => {
   const results = await sellerDb.getAllSellers();
-  res.status(201).json(results);
+  res.status(200).json(results);
 };
 
 // get all countries for dropdown menu as an
@@ -19,7 +19,7 @@ exports.getSellers = async (req, res) => {
 
 exports.getCountries = async (req, res) => {
   const results = await countryDb.getAllCountries();
-  res.status(201).json(results);
+  res.status(200).json(results);
 };
 
 // get all categories under a country ( id specified on the body )
@@ -32,7 +32,7 @@ exports.getCategories1 = async (req, res) => {
   }
   
   const results = await category1Db.getCategory1(req.body.country);
-  res.status(201).json(results);
+  res.status(200).json(results);
 };
 
 // get all category 2's under a category1 ( id specified on the body )
@@ -45,7 +45,7 @@ exports.getCategories2 = async (req, res) => {
   }
 
   const results = await category2Db.getCategory2(req.body.category1);
-  res.status(201).json(results);
+  res.status(200).json(results);
 };
 
 // get all category 3's under a category2 ( id specified on the body )
@@ -58,5 +58,5 @@ exports.getCategories3 = async (req, res) => {
   }
 
   const results = await category3Db.getCategory3(req.body.category2);
-  res.status(201).json(results);
+  res.status(200).json(results);
 };
