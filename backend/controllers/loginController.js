@@ -7,14 +7,14 @@ const testusers = [{username: "John", password: "Doe"},
 {username: ".", password: "."}];
 
 exports.login = (req, res) => {
-    var username = req.body.username;
-    var password = req.body.password;
-    var validation = false;
-    testusers.forEach(user => {
-        if (user.username == username && user.password == password) {
-            validation = true;
-            return;
-        }
-    });
-    res.send({validation: validation});
+  var username = req.body.username;
+  var password = req.body.password;
+  var validation = false;
+  testusers.forEach(user => {
+    if (user.username == username && user.password == password) {
+      validation = true;
+      return;
+    }
+  });
+  res.send({validation: validation});
 };

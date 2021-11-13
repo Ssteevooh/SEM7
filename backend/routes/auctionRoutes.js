@@ -1,7 +1,7 @@
 const express = require('express'),
-    router = express.Router(),
-    getAuctionController = require('../controllers/getAuctionController'),
-    postAuctionController = require("../controllers/postAuctionController");
+  router = express.Router(),
+  getAuctionController = require('../controllers/getAuctionController'),
+  postAuctionController = require("../controllers/postAuctionController");
 
 // used to get detailed information from one auction using its id
 router.get('/detailed', getAuctionController.browseWithId);

@@ -1,7 +1,7 @@
 const express = require('express'),
-    router = express.Router(),
-    getDropdownController = require('../controllers/getDropdownController'),
-    postDropdownController = require("../controllers/postDropdownController");
+  router = express.Router(),
+  getDropdownController = require('../controllers/getDropdownController'),
+  postDropdownController = require("../controllers/postDropdownController");
 
 // GET METHODS ------------------------
 
