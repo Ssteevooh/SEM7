@@ -22,28 +22,41 @@ exports.getCountries = async (req, res) => {
     res.status(201).json(results);
 };
 
-// TODO, remove parent id's from hierarchial objects down below
-
 // get all categories under a country ( id specified on the body )
-// as an array of {"id": id, "country": id, "category1": "example"} objects
+// as an array of {"id": id, "category1": "example"} objects
 
 exports.getCategories1 = async (req, res) => {
+    if (!req.body.country) {
+        res.status(400).send();
+        return;
+    }
+    
     const results = await category1Db.getCategory1(req.body.country);
     res.status(201).json(results);
 };
 
 // get all category 2's under a category1 ( id specified on the body )
-// as an array of {"id": id, "category1": id, "category2": "example"} objects
+// as an array of {"id": id, "category2": "example"} objects
 
 exports.getCategories2 = async (req, res) => {
+    if (!req.body.category1) {
+        res.status(400).send();
+        return;
+    }
+
     const results = await category2Db.getCategory2(req.body.category1);
     res.status(201).json(results);
 };
 
 // get all category 3's under a category2 ( id specified on the body )
-// as an array of {"id": id, "category2": id, "category3": "example"} objects
+// as an array of {"id": id, "category3": "example"} objects
 
 exports.getCategories3 = async (req, res) => {
+    if (!req.body.category2) {
+        res.status(400).send();
+        return;
+    }
+
     const results = await category3Db.getCategory3(req.body.category2);
     res.status(201).json(results);
 };
