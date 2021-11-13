@@ -1,0 +1,81 @@
+.stampAuctionDatabase {
+    top: 30px;
+    left: 30px;
+    width: 500px;
+    position: absolute;
+    border-radius: 25px;
+    background: #7491af;
+    color: #e3e3e3;
+    font-family: "Ubuntu";
+    text-align: center;
+    font-size: 40px;
+    border: none;
+}
+
+.browseButton {
+    cursor: pointer;
+    position: absolute;
+    left: 25vw;
+    width: 350px;
+    height: 100px;
+    border-radius: 25px;
+    margin-top: 43vh;
+    background: #7491af;
+    color: #e3e3e3;
+    font-family: "Ubuntu";
+    font-size: 40px;
+    text-align: center;
+    border: none;
+}
+
+.postButton {
+    cursor: pointer;
+    position: absolute;
+    right: 25vw;
+    width: 350px;
+    height: 100px;
+    border-radius: 25px;
+    margin-top: 43vh;
+    background: #7491af;
+    color: #e3e3e3;
+    font-family: "Ubuntu";
+    font-size: 40px;
+    text-align: center;
+    border: none;
+}
+
+@media only screen and (max-width: 1400px) {
+    .postButton {
+        margin-top: calc(43vh + 120px);
+        right: calc(50vw - 175px);
+    }
+    .browseButton {
+        left: calc(50vw - 175px);
+    }
+  }
+
+.ant-drawer-body {
+    background: #5b9292;
+}
+
+.ant-drawer-header {
+    background: #5b9292;
+    border: none;
+}
+
+.ant-drawer-title {
+    height: 60px;
+    font-size: 30px;
+    text-align: center;
+    font-family: "Ubuntu";
+    color: #e3e3e3;
+    display: block;
+    border-radius: 20px;
+    background-color: #74b0b0;
+    margin-top: 30px;
+    line-height: 55px;
+}
+
+.ant-drawer-close {
+    color: #e3e3e3;
+}

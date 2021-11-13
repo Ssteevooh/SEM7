@@ -16,7 +16,7 @@ const Index = ({ title }) => {
       const validator = loginCall(username, password);
       console.log(validator + "Validator");
       if (validator) {
-        setRoute("Post");
+        setRoute("Menu");
       } else {
         alert("Username or Password incorrect");
         setPassword("");
@@ -27,7 +27,7 @@ const Index = ({ title }) => {
 
   return (
     <div className="header">
-      <h1 id="rcorners1">{title}</h1>
+      <h1 id="title">{title}</h1>
 
       <Input
         id="username"
