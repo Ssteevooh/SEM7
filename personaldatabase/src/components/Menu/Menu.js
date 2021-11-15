@@ -29,7 +29,7 @@ const Menu = ({ title }) => {
       <button className="postButton" onClick={() => setRoute("Post")}>
         Post
       </button>
-      <UnorderedListOutlined style={{ fontSize: "60px", position:"absolute", right:"20px", top:"50px"}} onClick={() => showDrawer(true)}/>
+      <UnorderedListOutlined style={{ fontSize: "60px", position:"absolute", right:"20px", top:"50px", color:"#e3e3e3"}} onClick={() => showDrawer(true)}/>
       <Drawer title="John Doe" placement="right" onClose={onClose} visible={visible}>
       </Drawer>
     </div>
