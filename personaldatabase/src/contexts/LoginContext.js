@@ -1,31 +1,11 @@
 import React, { createContext, useState } from "react";
-import axios from "axios";
+import { constants } from "../Constants.js";
 
 export const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const dummyUser = { username: "John", password: "Doe" };
-
-  const loginCall = async (user, pass) => {
-    // TODO:  better logic
-    //        Change adress to backend
-    const response = await axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) => {
-        const person = res.data;
-        console.log(person);
-      })
-      .then(() => {
-        return dummyUser.username === user || user === "."
-          ? dummyUser.password === pass || pass === "."
-            ? true
-            : false
-          : false;
-      });
-  };
 
   return (
     <LoginContext.Provider
@@ -34,7 +14,6 @@ export const LoginProvider = ({ children }) => {
         setUsername,
         password,
         setPassword,
-        loginCall,
       }}
     >
       {children}
