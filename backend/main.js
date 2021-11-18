@@ -1,11 +1,22 @@
 //const { request } = require('http');
 
+
+
 const express = require('express'), app = express(), port = 5000,
     browseRouter = require('./routes/auctionRoutes'),
     dropdownRouter = require('./routes/dropdownRoutes'),
-    loginRouter = require('./routes/loginRoutes');
+    loginRouter = require('./routes/loginRoutes'),
+    cors = require('cors');
 
+const allowedOrigins = ['http://localhost:3000'];
+
+const options = {
+    origin: allowedOrigins
+};
+
+app.use(cors(options));
 app.use(express.json());
+
 
 app.use('/auctions', browseRouter.router);
 app.use('/dropdown', dropdownRouter.router);

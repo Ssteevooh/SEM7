@@ -7,9 +7,9 @@ const testusers = [{username: "John", password: "Doe"},
 {username: ".", password: "."}];
 
 exports.login = (req, res) => {
-    var username = req.body.username;
-    var password = req.body.password;
-    var validation = false;
+    const username = req.query.username;
+    const password = req.query.password;
+    let validation = false;
     testusers.forEach(user => {
         if (user.username == username && user.password == password) {
             validation = true;
