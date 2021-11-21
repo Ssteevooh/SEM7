@@ -26,12 +26,12 @@ exports.getCountries = async (req, res) => {
 // as an array of {"id": id, "category1": "example"} objects
 
 exports.getCategories1 = async (req, res) => {
-  if (!req.body.country) {
+  if (!req.query.country) {
     res.status(400).send();
     return;
   }
   
-  const results = await category1Db.getCategory1(req.body.country);
+  const results = await category1Db.getCategory1(req.query.country);
   res.status(200).json(results);
 };
 
@@ -39,12 +39,12 @@ exports.getCategories1 = async (req, res) => {
 // as an array of {"id": id, "category2": "example"} objects
 
 exports.getCategories2 = async (req, res) => {
-  if (!req.body.category1) {
+  if (!req.query.category1) {
     res.status(400).send();
     return;
   }
 
-  const results = await category2Db.getCategory2(req.body.category1);
+  const results = await category2Db.getCategory2(req.query.category1);
   res.status(200).json(results);
 };
 
@@ -52,11 +52,11 @@ exports.getCategories2 = async (req, res) => {
 // as an array of {"id": id, "category3": "example"} objects
 
 exports.getCategories3 = async (req, res) => {
-  if (!req.body.category2) {
+  if (!req.query.category2) {
     res.status(400).send();
     return;
   }
 
-  const results = await category3Db.getCategory3(req.body.category2);
+  const results = await category3Db.getCategory3(req.query.category2);
   res.status(200).json(results);
 };
