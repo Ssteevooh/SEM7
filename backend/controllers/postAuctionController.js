@@ -3,7 +3,7 @@ const Auction = require("../models/auction");
 
 exports.postNewAuction = async (req, res) => {
     var auction = new Auction.Auction(req.body);
-    console.log(auction);
+    console.log(auction); // testing
     var result = await auctionDb.createAuction(auction);
     res.status(201).send(result);
 };

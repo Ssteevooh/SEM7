@@ -13,10 +13,10 @@ class Auction {
         this.category1 = data.category1;
         this.category2 = data.category2;
         this.category3 = data.category3;
-        this.used = data.used;
-        this.mint = data.mint;
-        this.postalItem = data.postalItem;
-        this.certificate = data.certificate;
+        this.used = data.used === true;
+        this.mint = data.mint === true;
+        this.postalItem = data.postalItem === true;
+        this.certificate = data.certificate === true;
         this.auctionNumber = data.auctionNumber;
         this.lotNumber = data.lotNumber;
         this.date = new Date().toString();
