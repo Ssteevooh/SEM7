@@ -1,7 +1,10 @@
+const auctionDb = require("../db/Auction");
+
 // send all information about the auction for a detailed view
 
-exports.browseWithId = (req, res) => {
-    res.send("All information about the auction " + req.body.id + " in detailed view");
+exports.browseWithId = async (req, res) => {
+    var results = await auctionDb.getAuctionWithId(req.query.id);
+    res.status(200).send(results);
 };
 
 // send information for list view about the auctions

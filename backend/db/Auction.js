@@ -10,6 +10,10 @@ function getAuctions (struct, filters, settings) {
     .orderBy(settings.orderBy, ["desc", "asc"][settings.orderAscending]);
 }
 
+function getAuctionWithId (id) {
+    return knex("Auctions").select("*").where({"id": id});
+}
+
 function getCount (filters) {
     return knex("Auctions").count().where(filters);
 }
@@ -17,5 +21,6 @@ function getCount (filters) {
 module.exports = {
     createAuction: createAuction,
     getAuctions: getAuctions,
-    getCount: getCount
+    getCount: getCount,
+    getAuctionWithId: getAuctionWithId
 };
