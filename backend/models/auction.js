@@ -19,6 +19,7 @@ class Auction {
         this.certificate = data.certificate;
         this.auctionNumber = data.auctionNumber;
         this.lotNumber = data.lotNumber;
+        this.date = new Date().toString();
         this.user = data.user;
     }
 }
