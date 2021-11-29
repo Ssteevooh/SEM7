@@ -1,15 +1,16 @@
 const express = require('express'),
-    router = express.Router(),
-    getAuctionController = require('../controllers/getAuctionController'),
-    postAuctionController = require("../controllers/postAuctionController");
+  router = express.Router(),
+  getAuctionController = require('../controllers/getAuctionController'),
+  postAuctionController = require("../controllers/postAuctionController");
 
-// used to get detailed information from one auction using its id
+// used to get detailed information from one auction using its id given 
+// in a query
 router.get('/detailed', getAuctionController.browseWithId);
 
-// used to get information for list based view, search options as body
+// used to get information for list based view, search options as query
 router.get('/listbrowse', getAuctionController.browseListView);
 
-// used to get information for tile based view, search options as body
+// used to get information for tile based view, search options as query
 router.get('/tilebrowse', getAuctionController.browseTileView);
 
 // post new auction, takes auction data as body

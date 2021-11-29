@@ -1,6 +1,6 @@
 const express = require('express'),
-    router = express.Router(),
-    postController = require('../controllers/postController');
+  router = express.Router(),
+  postController = require('../controllers/postController');
 
 //post new auction
 router.post('/', postController.postNewAuction);

@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15",
+    "express": "^4.17.1",
+    "knex": "^0.95.14",
     "sqlite3": "^5.0.2"
   }
 }
