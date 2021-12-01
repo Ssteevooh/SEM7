@@ -4,6 +4,7 @@ sellerDb = require("../db/seller"),
 category1Db = require("../db/category1"),
 category2Db = require("../db/category2"),
 category3Db = require("../db/category3");
+const Auction = require("../models/auction");
 
 // send all information about the auction for a detailed view
 
@@ -35,8 +36,30 @@ exports.browseWithId = async (req, res) => {
 
 // send information for list view about the auctions
 
-exports.browseListView = (req, res) => {
-  res.send("Page " + (req.body.page || 1) + " of auctions ordered by " + (req.body.orderby || "date"));
+exports.browseListView = async (req, res) => {
+  var settings = {
+    page: 1,
+    maxPageSize: 10,
+    orderBy: req.query.orderBy || "date",
+    orderAscending: (req.query.orderAscending === "true") || false
+  };
+  if (req.query.page) settings.page = parseInt(req.query.page);
+  if (req.query.maxPageSize) settings.maxPageSize = parseInt(req.query.maxPageSize);
+  console.log(settings);
+  var filters = {};
+  if (req.query.seller) filters.seller = req.query.seller;
+  if (req.query.country) filters.country = req.query.country;
+  if (req.query.category1) filters.category1 = req.query.category1;
+  if (req.query.category2) filters.category2 = req.query.category2;
+  if (req.query.category3) filters.category3 = req.query.category3;
+  if (req.query.used) filters.used = req.query.used == "true";
+  if (req.query.mint) filters.mint = req.query.mint == "true";
+  if (req.query.postalItem) filters.postalItem = req.query.postalItem == "true";
+  if (req.query.certificate) filters.certificate = req.query.certificate == "true";
+  if (req.query.catalogueNumber) filters.catalogueNumber = req.query.catalogueNumber;
+
+  var results = await auctionDb.getAuctions(Auction.Auction.listModel, filters, settings);
+  res.send(results);
 };
 
 // send information for tile view about the auctions

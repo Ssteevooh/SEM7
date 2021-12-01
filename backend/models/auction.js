@@ -30,6 +30,18 @@ class Auction {
     this.date = new Date().toString();
     this.user = data.user;
   }
+  static listModel = {
+    id: "id",
+    startingPrice: "startingPrice",
+    sellingPrice: "sellingPrice",
+    currency: "currency",
+    seller: "seller",
+    sellingYear: "sellingYear",
+    thumbnail: "thumbnail",
+    date: "date",
+    description: "description",
+    catalogueNumber: "catalogueNumber"
+  };
 
   // used to check if the auction is assigned a country, seller or category that does not exist
   async invalidCategories() {

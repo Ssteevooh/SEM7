@@ -6,7 +6,7 @@ function createAuction (auction) {
 
 function getAuctions (struct, filters, settings) {
     return knex("Auctions").select(struct).where(filters)
-    .limit(settings.maxPageSize).offset(settings.page * settings.maxPageSize)
+    .limit(settings.maxPageSize).offset((settings.page - 1) * settings.maxPageSize)
     .orderBy(settings.orderBy, ["desc", "asc"][settings.orderAscending]);
 }
 
