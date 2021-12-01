@@ -1,5 +1,9 @@
 // model for auctions
 const countryDb = require("../db/country");
+const sellerDb = require("../db/seller");
+const category1Db = require("../db/category1");
+const category2Db = require("../db/category2");
+const category3Db = require("../db/category3");
 
 class Auction {
     constructor (data) {
@@ -29,13 +33,56 @@ class Auction {
 
     // used to check if the auction is assigned a country, seller or category that does not exist
     async invalidCategories() {
-        var count;
-        if (this.country != null) {
-            count = await countryDb.getCount(this.country);
-            if (count[0]["count(*)"] < 1) {
-                return true;} 
-        } // TODO -- add checks for other id's too
+
+        // return true if country doesn't exist
+        if (! await this.validate(this.country, countryDb)) {
+            console.log("country");
+            return true;
+        }
+
+        // return true if seller doesn't exist
+        if (! await this.validate(this.seller, sellerDb)) {
+            console.log("seller");
+            return true;
+        }
+
+        // return true if cat1 doesn't exist
+        if (! await this.validate(this.category1, category1Db)) {
+            console.log("c1");
+            return true;
+        }
+
+        // return true if cat2 doesn't exist
+        if (! await this.validate(this.category2, category2Db)) {
+            console.log("c2");
+            return true;
+        }
+
+        // return true if cat3 doesn't exist
+        if (! await this.validate(this.category3, category3Db)) {
+            console.log("c3");
+            return true;
+        }
+
+        // check for category hierarchy
+        if (this.category1 == null) {
+            if (this.category2 != null || this.category3 != null) return true;
+        }
+        if (this.category2 == null && this.category3 != null) return true;
+
         return false;
+    }
+
+    // checks if an id exists in db, return true is exists, false if not
+    async validate (id, db) {
+        var count;
+        if (id != null) {
+            count = await db.getCount(id);
+            if (count[0]["count(*)"] < 1) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
