@@ -13,8 +13,13 @@ function getCount(id) {
   return knex("Sellers").count().where({"id": id});
 }
 
+function getSeller(id) {
+  return knex("Sellers").select({name: "name", id: "id"}).where({"id": id});
+}
+
 module.exports = {
   createSeller,
   getAllSellers,
-  getCount
+  getCount,
+  getSeller
 };

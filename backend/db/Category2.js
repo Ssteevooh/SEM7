@@ -7,7 +7,7 @@ function createCategory2(category2) {
 function getCategory2(category1id) {
   return knex("Category2").select({
     id: "id",
-    category1: "category2"
+    category2: "category2"
   }).where("category1", category1id);
 }
 
