@@ -41,7 +41,7 @@ exports.browseListView = async (req, res) => {
     page: 1,
     maxPageSize: 10,
     orderBy: req.query.orderBy || "date",
-    orderAscending: (req.query.orderAscending === "true") || false
+    orderAscending: req.query.orderAscending === "true" ? 1 : 0
   };
   if (req.query.page) settings.page = parseInt(req.query.page);
   if (req.query.maxPageSize) settings.maxPageSize = parseInt(req.query.maxPageSize);
