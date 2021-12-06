@@ -13,8 +13,13 @@ function getCount(id) {
   return knex("Countries").count().where({"id": id});
 }
 
+function getCountry(id) {
+  return knex("Countries").select({name: "name", id: "id"}).where({"id": id});
+}
+
 module.exports = {
   createCountry,
   getAllCountries,
-  getCount
+  getCount,
+  getCountry
 };

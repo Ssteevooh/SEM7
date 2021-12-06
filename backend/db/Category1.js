@@ -11,7 +11,13 @@ function getCategory1(countryid) {
   }).where("country", countryid);
 }
 
+// used to check if a specific id exists while validating for new auctions
+function getCount(id) {
+  return knex("Category1").count().where({"id": id});
+}
+
 module.exports = {
   createCategory1,
-  getCategory1
+  getCategory1,
+  getCount
 };
