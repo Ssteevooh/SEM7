@@ -4,6 +4,7 @@ const sellerDb = require("../db/seller");
 const category1Db = require("../db/category1");
 const category2Db = require("../db/category2");
 const category3Db = require("../db/category3");
+const moment = require("moment");
 
 class Auction {
   constructor (data) {
@@ -27,7 +28,7 @@ class Auction {
 
     this.auctionNumber = data.auctionNumber;
     this.lotNumber = data.lotNumber;
-    this.date = new Date().toString();
+    this.date = moment().format("DD-MM-YYYY");
     this.user = data.user;
   }
   static listModel = {

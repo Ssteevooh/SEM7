@@ -59,7 +59,7 @@ exports.browseListView = async (req, res) => {
   if (req.query.catalogueNumber) filters.catalogueNumber = req.query.catalogueNumber;
 
   var results = await auctionDb.getAuctions(Auction.Auction.listModel, filters, settings);
-  res.send(results);
+  res.send({info: {}, auctions: results});
 };
 
 // send information for tile view about the auctions
