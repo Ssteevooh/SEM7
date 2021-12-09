@@ -13,7 +13,7 @@ export const RouteProvider = ({ children }) => {
     case "Index":
       return <Index />;
     case "Post":
-      return <Post />;
+      return <Post/>;
     case "Menu":
       return <Menu />;
     default:
