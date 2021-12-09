@@ -3,7 +3,7 @@
 
 
 const express = require('express'), app = express(), port = 5000,
-    browseRouter = require('./routes/auctionRoutes'),
+    auctionRouter = require('./routes/auctionRoutes'),
     dropdownRouter = require('./routes/dropdownRoutes'),
     loginRouter = require('./routes/loginRoutes'),
     cors = require('cors');
@@ -17,8 +17,7 @@ const options = {
 app.use(cors(options));
 app.use(express.json());
 
-
-app.use('/auctions', browseRouter.router);
+app.use('/auctions', auctionRouter.router);
 app.use('/dropdown', dropdownRouter.router);
 app.use("/login", loginRouter.Router);
 
