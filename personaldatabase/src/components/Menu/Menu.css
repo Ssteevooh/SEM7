@@ -44,6 +44,14 @@
     border: none;
 }
 
+#sideMenuButton {
+    font-size: 60px;
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    color: #e3e3e3;
+}
+
 @media only screen and (max-width: 1400px) {
     .postButton {
         margin-top: calc(43vh + 120px);
