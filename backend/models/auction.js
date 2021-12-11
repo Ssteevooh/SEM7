@@ -8,17 +8,17 @@ const moment = require("moment");
 
 class Auction {
   constructor (data) {
-    this.startingPrice = data.startingPrice;
-    this.sellingPrice = data.sellingPrice;
-    this.currency = data.currency;
-    this.seller = data.seller;
-    this.sellingYear = data.sellingYear;
-    this.description = data.description;
-    this.catalogueNumber = data.catalogueNumber;
-    this.country = data.country;
-    this.category1 = data.category1;
-    this.category2 = data.category2;
-    this.category3 = data.category3;
+    this.startingPrice = data.startingPrice || null;
+    this.sellingPrice = data.sellingPrice || null;
+    this.currency = data.currency || null;
+    this.seller = data.seller || null;
+    this.sellingYear = data.sellingYear || null;
+    this.description = data.description || null;
+    this.catalogueNumber = data.catalogueNumber || null;
+    this.country = data.country || null;
+    this.category1 = data.category1 || null;
+    this.category2 = data.category2 || null;
+    this.category3 = data.category3 || null;
 
     // boolean validation
     this.used = data.used === true;
@@ -26,10 +26,10 @@ class Auction {
     this.postalItem = data.postalItem === true;
     this.certificate = data.certificate === true;
 
-    this.auctionNumber = data.auctionNumber;
-    this.lotNumber = data.lotNumber;
+    this.auctionNumber = data.auctionNumber || null;
+    this.lotNumber = data.lotNumber || null;
     this.date = moment().format("DD-MM-YYYY");
-    this.user = data.user;
+    this.user = data.user || null;
   }
   static listModel = {
     id: "id",
