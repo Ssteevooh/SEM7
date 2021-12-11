@@ -2,9 +2,11 @@ import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { RouteContext } from "../../Contexts/RouterContext";
 import "antd/dist/antd.css";
-import { Layout, Menu as antdMenu, Drawer } from "antd";
+import { Layout, Menu as antdMenu, Drawer, Popconfirm } from "antd";
 import {
   UnorderedListOutlined,
+  SettingFilled,
+  LogoutOutlined
 } from "@ant-design/icons";
 import "./Menu.css";
 
@@ -20,6 +22,8 @@ const Menu = ({ title }) => {
     setVisible(false);
   };
 
+  const logoutText = "Are you sure?";
+
   return (
     <div>
       <h1 className="stampAuctionDatabase">{title}</h1>
@@ -31,6 +35,11 @@ const Menu = ({ title }) => {
       </button>
       <UnorderedListOutlined id="sideMenuButton" onClick={() => showDrawer(true)}/>
       <Drawer title="John Doe" placement="right" onClose={onClose} visible={visible}>
+        <button className="settingsButton">Settings <SettingFilled/></button>
+        <Popconfirm title={logoutText} onConfirm={confirm} okText="Logout" cancelText="Back">
+          <button className="logoutButton">Logout <LogoutOutlined/></button>
+        </Popconfirm>
+        <h3 className="appVersion">App version 01.00.00</h3>
       </Drawer>
     </div>
   );

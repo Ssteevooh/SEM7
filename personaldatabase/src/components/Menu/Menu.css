@@ -44,6 +44,41 @@
     border: none;
 }
 
+.settingsButton {
+    cursor: pointer;
+    position: absolute;
+    right: 1.5vw;
+    width: 200px;
+    font-size: 30px;
+    border-radius: 25px;
+    bottom: 200px;
+    background: #7491af;
+    color: #e3e3e3;
+    font-family: "Ubuntu";
+    border: none;
+}
+
+.logoutButton {
+    cursor: pointer;
+    position: absolute;
+    right: 1.5vw;
+    width: 200px;
+    font-size: 30px;
+    border-radius: 25px;
+    bottom: 100px;
+    background: #7491af;
+    color: #e3e3e3;
+    font-family: "Ubuntu";
+    border: none;
+}
+
+.appVersion {
+    position: absolute;
+    bottom: 10px;
+    color: #e3e3e3;
+    right: 3.5vw;
+}
+
 #sideMenuButton {
     font-size: 60px;
     position: absolute;
@@ -72,7 +107,7 @@
 }
 
 .ant-drawer-title {
-    height: 60px;
+    height: 140px;
     font-size: 30px;
     text-align: center;
     font-family: "Ubuntu";
@@ -87,3 +122,56 @@
 .ant-drawer-close {
     color: #e3e3e3;
 }
+
+span {
+    font-size: 25px;
+}
+
+.ant-popover-inner-content {
+    height: 80px;
+    width: 240px;
+    font-size: 30px;
+    text-align: center;
+    font-family: "Ubuntu";
+    color: #e3e3e3;
+    display: block;
+    background-color: #74b0b0;
+    border-radius: 25px;
+    border: none;
+}
+
+.ant-btn-sm {
+    position:relative;
+    height: 40px;
+    bottom: 20px;
+    margin-right: 20px;
+}
+
+.ant-popover-arrow-content {
+    background-color: #74b0b0;
+    
+}
+
+.ant-popover-inner {
+    border-radius: 25px;
+    background-color: #74b0b0;
+    border: none;
+}
+
+.ant-popover-message-title {
+    position: relative;
+    bottom: 18px;
+    font-size: 25px;
+    color: #e3e3e3;
+}
+
+.ant-popover-buttons {
+    position: relative;
+    bottom: 18px;
+}
+
+.anticon {
+    right: 160px !important;
+    top: 0px !important;
+}
+
