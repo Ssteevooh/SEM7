@@ -5,7 +5,9 @@ import { constants } from "../Constants";
 export const PostContext = createContext();
 
 export const PostProvider = ({ children }) => {
-    
+  
+  const [postContent, setPostContent] = useState({});
+
   const emptyAuction = {};
 
   const setPostItem = (target, value) => {
@@ -19,9 +21,6 @@ export const PostProvider = ({ children }) => {
         console.log(res);
       });
   };
-
-
-  const [postContent, setPostContent] = useState(emptyAuction);
 
   return (
     <PostContext.Provider

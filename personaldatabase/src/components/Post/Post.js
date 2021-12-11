@@ -1,23 +1,25 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState, useRef } from "react";
 import { RouteContext } from "../../Contexts/RouterContext";
 import { PostContext } from "../../Contexts/PostContext";
+import { constants } from "../../Constants";
 import { Row, Col, Select, Input, Checkbox } from "antd";
+import axios from "axios";
 import { ArrowLeftOutlined, SaveOutlined  } from "@ant-design/icons";
 import logo from "../../public/images/StampLogo.png";
 import "antd/dist/antd.css";
 import "./Post.css";
 
-const Post = (emptyObject) => {
+const Post = () => {
 
   const { setRoute } = useContext(RouteContext);
-  const { setPostContent, emptyAuction, setPostItem, saveAuction } = useContext(PostContext);
+  const { postItem, setPostContent, emptyAuction, setPostItem, saveAuction } = useContext(PostContext);
 
   const { Option } = Select;
 
   const { TextArea } = Input;
   
-  const categoryNames = ["Country", "Category 1", "Category 2", "Category 3"];
-  const categoryAttributeNames = ["country", "category1", "category2", "category3"];
+  const categoryNames = ["Category 1", "Category 2", "Category 3"];
+  const categoryAttributeNames = ["category1", "category2", "category3"];
 
 
   const additionalImages = ["image1", "image2", "image3"];
@@ -25,9 +27,30 @@ const Post = (emptyObject) => {
   const checkBoxTitles = ["Used", "Mint", "Postal item", "Certificate"];
   const checkBoxAttributeNames = ["used", "mint", "postalItem", "certificate"];
 
-  useEffect(() => { // TODO : Preserve some details.
-    setPostContent(emptyAuction);
+  const [countryOptions, setCountryOptions] = useState([]);
+
+  const [countryValue, setCountryValue] = useState("Esimerkki");
+
+  const changeCountry = (element)=> {
+    setPostItem("country", element);
+    setCountryValue(element);
+  };
+
+  useLayoutEffect(() => {
+    axios
+      .get(`${constants.URL}/dropdown/country`)
+      .then((res) => {
+        setCountryOptions(res.data);
+      });
   },[]);
+
+  useEffect(() => { // TODO : Preserve some details.
+    setPostContent({});
+  },[]);
+
+  useEffect(() => {
+    setCountryValue(countryValue);
+  },[countryValue]);
 
   const categorys = categoryNames.map((category, index) =>
     <Select
@@ -68,6 +91,15 @@ const Post = (emptyObject) => {
     </Checkbox>
   );
 
+  const countryOptionsComponent = countryOptions.map((country) =>
+    <Option
+      key={country.id}
+      id={country.id}
+      value={country.id}>
+      {country.name}
+    </Option>
+  );
+
   return (
     <div>
       <div id="PostHeader">
@@ -86,7 +118,21 @@ const Post = (emptyObject) => {
       <div id="postWrapper">
         <Row justify="space-around" align="middle" className="firstRow">
           <Col className="columnFirstRow" style={{width: "calc(33% - 5px)"}}>
-            <div>{categorys}</div>
+            <div>
+              <Select
+                className="categoryMenu"
+                showSearch
+                placeholder="Country ..."
+                optionFilterProp="children"
+                onChange={(e) => changeCountry(e)}
+                filterOption={(input, option) => 
+                  option.children.toLowerCase().includes(input.toLowerCase())
+                }
+              >
+                {countryOptionsComponent}
+              </Select>
+              {categorys}
+            </div>
           </Col>
           <Col className="columnFirstRow" style={{width: "calc(66% - 5px)"}}>
             <TextArea
