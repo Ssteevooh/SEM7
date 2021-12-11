@@ -98,6 +98,11 @@ const Post = () => {
     setPostContent({});
   },[]);
 
+  const saveAuctionButton = () => {
+    saveAuction();
+    setRoute("Browse");
+  };
+
   const categoryOptions1 = category1.map((category) =>
     <Option
       key={category.id}
@@ -191,7 +196,7 @@ const Post = () => {
         <div id="postView">
           <p id="postText"> Post view </p>
         </div>
-        <button id="save" onClick={() => saveAuction()} style={{float: "right"}}>
+        <button id="save" onClick={() => saveAuctionButton()} style={{float: "right"}}>
           Save
           <SaveOutlined style={{fontSize: "2.3vh", paddingLeft: "6px" }}/>
         </button>
