@@ -23,7 +23,7 @@ const Menu = ({ title }) => {
   return (
     <div>
       <h1 className="stampAuctionDatabase">{title}</h1>
-      <button className="browseButton">
+      <button className="browseButton" onClick={() => setRoute("Browse")}>
         Browse
       </button>
       <button className="postButton" onClick={() => setRoute("Post")}>

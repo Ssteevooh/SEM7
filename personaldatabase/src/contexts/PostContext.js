@@ -11,12 +11,11 @@ export const PostProvider = ({ children }) => {
   const emptyAuction = {};
 
   const setPostItem = (target, value) => {
-    console.log(target);
-    console.log(value);
     postContent[target] = value;
   };
 
   const saveAuction = () => {
+    postContent.currency = "€";
     axios
       .post(`${constants.URL}/auctions`, postContent)
       .then((res) => {
