@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import Index from "../Components/Login/Index";
 import Menu from "../Components/Menu/Menu";
 import Post from "../Components/Post/Post";
+import Browse from "../Components/Browse/Browse";
 
 export const RouteContext = createContext();
 
@@ -16,6 +17,8 @@ export const RouteProvider = ({ children }) => {
       return <Post/>;
     case "Menu":
       return <Menu />;
+    case "Browse":
+      return <Browse />;
     default:
       return <Index />;
     }

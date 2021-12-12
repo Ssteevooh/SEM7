@@ -12,7 +12,7 @@ import "./Post.css";
 const Post = () => {
 
   const { setRoute } = useContext(RouteContext);
-  const { postItem, setPostContent, emptyAuction, setPostItem, saveAuction } = useContext(PostContext);
+  const { setPostContent, setPostItem, saveAuction } = useContext(PostContext);
 
   const { Option } = Select;
 
@@ -20,7 +20,7 @@ const Post = () => {
   
   const categoryNames = ["Category 1", "Category 2", "Category 3"];
   const categoryAttributeNames = ["category1", "category2", "category3"];
-
+  const categoryRequestList = ["category1", "category2", "category3", "country"];
 
   const additionalImages = ["image1", "image2", "image3"];
 
@@ -28,12 +28,57 @@ const Post = () => {
   const checkBoxAttributeNames = ["used", "mint", "postalItem", "certificate"];
 
   const [countryOptions, setCountryOptions] = useState([]);
+  const [sellerOptions, setSellerOptions] = useState([]);
 
-  const [countryValue, setCountryValue] = useState("Esimerkki");
+  const [countryValue, setCountryValue] = useState(null); //eslint-disable-line
+  const [category1Value, setCategory1Value] = useState(null); //eslint-disable-line
+  const [category2Value, setCategory2Value] = useState(null); //eslint-disable-line
+  const [category3Value, setCategory3Value] = useState(null); //eslint-disable-line
+  const [category1, setCategory1] = useState([]);
+  const [category2, setCategory2] = useState([]);
+  const [category3, setCategory3] = useState([]);
 
   const changeCountry = (element)=> {
     setPostItem("country", element);
     setCountryValue(element);
+    axios
+      .get(`${constants.URL}/dropdown/category1?country=${element}`)
+      .then((res) => {
+        setCategory1(res.data);
+      });
+  };
+
+  const fetchCategory = (index, element) => {
+    if (index === 0) {
+      changeCategory1(element);
+    }
+    else if (index === 1) {
+      changeCategory2(element);
+    }
+    else {
+      setPostItem("category3", element);
+      setCategory3Value(element);
+    }
+  };
+
+  const changeCategory1 = (element)=> {
+    setPostItem("category1", element);
+    setCategory1Value(element);
+    axios
+      .get(`${constants.URL}/dropdown/category2?category1=${element}`)
+      .then((res) => {
+        setCategory2(res.data);
+      });
+  };
+
+  const changeCategory2 = (element)=> {
+    setPostItem("category2", element);
+    setCategory2Value(element);
+    axios
+      .get(`${constants.URL}/dropdown/category3?category2=${element}`)
+      .then((res) => {
+        setCategory3(res.data);
+      });
   };
 
   useLayoutEffect(() => {
@@ -42,15 +87,46 @@ const Post = () => {
       .then((res) => {
         setCountryOptions(res.data);
       });
+    axios
+      .get(`${constants.URL}/dropdown/seller`)
+      .then((res) => {
+        setSellerOptions(res.data);
+      });
   },[]);
 
   useEffect(() => { // TODO : Preserve some details.
     setPostContent({});
   },[]);
 
-  useEffect(() => {
-    setCountryValue(countryValue);
-  },[countryValue]);
+  const saveAuctionButton = () => {
+    saveAuction();
+    setRoute("Browse");
+  };
+
+  const categoryOptions1 = category1.map((category) =>
+    <Option
+      key={category.id}
+      id={category.id}
+      value={category.id}>
+      {category.category1}
+    </Option>
+  );
+  const categoryOptions2 = category2.map((category) =>
+    <Option
+      key={category.id}
+      id={category.id}
+      value={category.id}>
+      {category.category2}
+    </Option>
+  );
+  const categoryOptions3 = category3.map((category) =>
+    <Option
+      key={category.id}
+      id={category.id}
+      value={category.id}>
+      {category.category3}
+    </Option>
+  );
 
   const categorys = categoryNames.map((category, index) =>
     <Select
@@ -59,14 +135,15 @@ const Post = () => {
       showSearch
       placeholder={`${category} ...`}
       optionFilterProp="children"
-      onChange={(e) => setPostItem(categoryAttributeNames[index], e)}
+      onChange={(e) => fetchCategory(index, e)}
       filterOption={(input, option) =>
         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
       }
     >
-      <Option value="jack">Jack</Option>
-      <Option value="lucy">Lucy</Option>
-      <Option value="tom">Tom</Option>
+      {category === "Category 1"
+        ? categoryOptions1
+        : category === "Category 2" ? categoryOptions2
+          : categoryOptions3}
     </Select>
   );
 
@@ -100,6 +177,15 @@ const Post = () => {
     </Option>
   );
 
+  const sellerOptionsComponent = sellerOptions.map((seller) =>
+    <Option
+      key={seller.id}
+      id={seller.id}
+      value={seller.id}>
+      {seller.name}
+    </Option>
+  );
+
   return (
     <div>
       <div id="PostHeader">
@@ -110,7 +196,7 @@ const Post = () => {
         <div id="postView">
           <p id="postText"> Post view </p>
         </div>
-        <button id="save" onClick={() => saveAuction()} style={{float: "right"}}>
+        <button id="save" onClick={() => saveAuctionButton()} style={{float: "right"}}>
           Save
           <SaveOutlined style={{fontSize: "2.3vh", paddingLeft: "6px" }}/>
         </button>
@@ -178,8 +264,20 @@ const Post = () => {
                   <Input className="infoInputBottom" placeholder="Auction number" onChange={(e) => setPostItem("auctionNumber", e.target.value)}/>
                 </Row>
                 <Row justify="space-around" align="middle" className="stampInfoRowBottom">
-                  <Input className="infoInputBottom" placeholder="Seller" onChange={(e) => setPostItem("seller", e.target.value)}/>
-                  <Input className="infoInputBottom" placeholder="Lot number" onChange={(e) => setPostItem("lotNumber", e.target.value)}/>
+                  <Select
+                    className="infoInputBottom"
+                    showSearch
+                    style={{borderRadius: "4px!important"}}
+                    placeholder="Seller ..."
+                    optionFilterProp="children"
+                    onChange={(e) => setPostItem("seller", e)}
+                    filterOption={(input, option) => 
+                      option.children.toLowerCase().includes(input.toLowerCase())
+                    }
+                  >
+                    {sellerOptionsComponent}
+                  </Select>
+                  <Input className="infoInputBottomLot" placeholder="Lot number" onChange={(e) => setPostItem("lotNumber", e.target.value)}/>
                 </Row>
               </Col>
             </Row>

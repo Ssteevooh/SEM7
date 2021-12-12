@@ -27,7 +27,7 @@ const Menu = ({ title }) => {
   return (
     <div>
       <h1 className="stampAuctionDatabase">{title}</h1>
-      <button className="browseButton">
+      <button className="browseButton" onClick={() => setRoute("Browse")}>
         Browse
       </button>
       <button className="postButton" onClick={() => setRoute("Post")}>
@@ -36,7 +36,7 @@ const Menu = ({ title }) => {
       <UnorderedListOutlined id="sideMenuButton" onClick={() => showDrawer(true)}/>
       <Drawer title="John Doe" placement="right" onClose={onClose} visible={visible}>
         <button className="settingsButton">Settings <SettingFilled/></button>
-        <Popconfirm title={logoutText} onConfirm={confirm} okText="Logout" cancelText="Back">
+        <Popconfirm title={logoutText} onConfirm={() => setRoute("Index")} okText="Logout" cancelText="Back">
           <button className="logoutButton">Logout <LogoutOutlined/></button>
         </Popconfirm>
         <h3 className="appVersion">App version 01.00.00</h3>

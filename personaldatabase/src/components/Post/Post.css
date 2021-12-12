@@ -266,13 +266,21 @@ p {
 
 .infoInputBottom {
   width: 23vw;
-  height: 5vh;
+  height: 6vh;
   font-size: 3vh;
   background-color: #5B9292;
   color: #e3e3e3;
   resize: none;
 }
 
+.infoInputBottomLot {
+  width: 23vw;
+  height: 6.5vh;
+  font-size: 3vh;
+  background-color: #5B9292;
+  color: #e3e3e3;
+  resize: none;
+}
 
 .ant-checkbox-inner, .ant-checkbox-input {
   -ms-transform: scale(2);
@@ -294,4 +302,8 @@ p {
   color: #e3e3e3;
   font-size: 110%;
   display: inline;
+}
+
+Select, TextArea, Input{
+  border-radius: 4px !important;
 }

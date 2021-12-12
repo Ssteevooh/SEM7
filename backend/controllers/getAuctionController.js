@@ -59,6 +59,9 @@ exports.browseListView = async (req, res) => {
   if (req.query.catalogueNumber) filters.catalogueNumber = req.query.catalogueNumber;
 
   var results = await auctionDb.getAuctions(Auction.Auction.listModel, filters, settings);
+  for (var i = 0; i < results.length; i++){
+    results[i].seller = (await sellerDb.getSeller(results[i].seller))[0] || null;
+  };
   res.send({info: {}, auctions: results});
 };
 
