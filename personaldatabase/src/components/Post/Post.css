@@ -303,3 +303,7 @@ p {
   font-size: 110%;
   display: inline;
 }
+
+Select, TextArea, Input{
+  border-radius: 4px !important;
+}

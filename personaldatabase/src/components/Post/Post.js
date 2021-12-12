@@ -12,7 +12,7 @@ import "./Post.css";
 const Post = () => {
 
   const { setRoute } = useContext(RouteContext);
-  const { postItem, setPostContent, emptyAuction, setPostItem, saveAuction } = useContext(PostContext);
+  const { setPostContent, setPostItem, saveAuction } = useContext(PostContext);
 
   const { Option } = Select;
 
@@ -264,10 +264,10 @@ const Post = () => {
                   <Input className="infoInputBottom" placeholder="Auction number" onChange={(e) => setPostItem("auctionNumber", e.target.value)}/>
                 </Row>
                 <Row justify="space-around" align="middle" className="stampInfoRowBottom">
-
                   <Select
                     className="infoInputBottom"
                     showSearch
+                    style={{borderRadius: "4px!important"}}
                     placeholder="Seller ..."
                     optionFilterProp="children"
                     onChange={(e) => setPostItem("seller", e)}

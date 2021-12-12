@@ -103,12 +103,12 @@ const Browse = () => {
       </div>
       <div className="paginationButtons">
         <Button size="default" shape="round" className="paginationButtonPrevious" onClick={() => changePage(-1)}>
-          <ArrowLeftOutlined />
-          Previous page
+          <p className="paginationText"><ArrowLeftOutlined />
+          Previous page</p>
         </Button>
         <Button size="default" shape="round" className="paginationButtonNext" onClick={() => changePage(1)}>
-          Next page
-          <ArrowRightOutlined />
+          <p className="paginationText">Next page
+            <ArrowRightOutlined /></p>
         </Button>
       </div>
     </div>
