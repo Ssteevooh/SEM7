@@ -1,2 +1,2 @@
 # SEM7
-Software Engineering and Modelling
+School project for Software Engineering and Modelling
